@@ -1,0 +1,43 @@
+<h1 align="center">Item Information</h1>
+<fieldset>
+        <label for="txtItemTable">Item Title:</label> <input type="text" name="item_title" [(ngModel)] = "item.title" size=20><br>
+        <label for="txtItemDesc">Item Description :</label> <input type="text" name="item_desc" [(ngModel)] = "item.title_desc" size="20"><br>
+        <div style="text-align:center;">      
+            <input type="submit" value="Add Item" (click) = onClick()>
+        </div>
+</fieldset>
+
+
+<h1 align="center">Item List</h1>
+<div align="center">
+   <table border="1">
+
+
+       <thead>
+           <tr>
+               <th>
+                   Item Title
+               </th>
+               <th>
+                   Item Description
+               </th>
+               <th>
+                   Delete Item
+               </th>
+           </tr>
+        </thead> 
+           <div *ngFor= 'let item of items'>
+           <tr>
+               <td>
+                   <span (click) = "onStrike(item)" [ngClass]="{'strike' : item.strike}">{{item.title}}</span>
+               </td>
+               <td>
+                    {{item.title_desc}}
+               </td>
+               <td>
+                    <input type="submit" value="Remove" (click)="onDelete(item)">
+               </td>
+           </tr>
+        </div>
+   </table> 
+</div>
